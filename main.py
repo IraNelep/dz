@@ -528,4 +528,4 @@ import random as r
 # print(s)
 # print("Количество слов: ", s.count(' е') + s.count(' Е'))
 #
-#
+#епвпапапп
