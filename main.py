@@ -1,7 +1,6 @@
 import random as r
 import re
 
-
 # kop = int(input("Введите число от 1 до 99: "))
 # if 1 <= kop <= 99:
 #     if kop % 10 == 1 and kop != 11:
@@ -531,7 +530,7 @@ import re
 # print("Количество слов: ", s.count(' е') + s.count(' Е'))
 # r'[A-z\.]+[-@_+]{6,18}'
 # ------------------------------ DZ 01/02/23 ----------------------------------
-# import re
+import re
 #
 #
 # def validate_name(name):
@@ -582,7 +581,8 @@ import re
 
 # -------------------------------DZ 07/02/23-------------------------------------------
 
-# from random import randint
+from random import randint
+
 #
 #
 # def binary_search(s, item):
@@ -611,3 +611,102 @@ import re
 #     print(f"Число {n} в списке присутствует")
 # else:
 #     print(f"Число {n} в списке отсутствует")
+
+# --------------------------- DZ 13/02/23 ------------------------------
+
+# def seq_search(s, item):
+#     pos = 0
+#     found = False
+#     while pos < len(s) and not found:
+#         if s[pos] == item:
+#             found = True
+#         else:
+#             pos += 1
+#     return found
+#
+#
+# if c:
+#     print(f"Число {b} в списке присутствует")
+# else:
+#     print(f"Число {b} в списке отсутствует")
+#
+# a = [randint(1, 10) for i in range(10)]
+# b = int(input("Введите число:"))
+# print(a)
+# c = seq_search(a, b)
+
+# ---------------------------------------------------------------------
+
+# test = ["Замена строки в текстовом файле",
+#         "Изменить строку в списке",
+#         "Записать список в файл"]
+#
+# pos = 1
+# print(test)
+# test.pop(pos)
+# print(test)
+
+# ---------------------------------------------------------------------
+# a = [5, 9, 6, 7]
+# b = [3, 11, 8]
+# c = [2, 4]
+# d = [10, 1, 12]
+# abcd = a+b+c+d
+#
+#
+# def seq_search(s, item):
+#     pos = 0
+#     found = False
+#     while pos < len(s) and not found:
+#         if s[pos] == item:
+#             found = True
+#         else:
+#             pos += 1
+#     return found
+#
+#
+# sort = int(input("1 or 2: "))
+# if sort == 1:
+#     abcd.sort(reverse=True)
+# else:
+#     abcd.sort()
+#
+# print(abcd)
+# poisk = int(input("Введите значение для поиска: "))
+# searching = seq_search(abcd, poisk)
+# if poisk in abcd:
+#     print(f"Значение {poisk} найдено")
+# else:
+#     print(f"Значение {poisk} не найдено")
+
+# ---------------------------- DZ 15/02/23 -----------------------------
+
+# import os
+#
+# # print(open(r"D:\Study\PYTHON\new\Work\f3.txt", "w").write(
+# #   open(r"D:\Study\PYTHON\new\Work\file1.txt", "r").read() + open(r"D:\Study\PYTHON\new\Work\file2.txt", "r").read()))
+#
+# one_file = 'file1.txt' # запись из одного файла в другой
+# two_file = 'file2.txt'
+# with open(read_file, 'r') as fr, open(write_file, 'w') as fw:
+#     for line in fr:
+#         line = line.replace("Строка", "Линия - ")
+#         fw.write(line)
+# -----------------------------------------------------------------------
+# file_name = "test.txt"
+#
+#
+# def is_exist(fl):
+#     if os.path.exists(fl):
+#         print("hello")
+#     else:
+#         print("kl;d")
+#
+#
+# # print(os.getcwd()) # возвращает путь к текущей директории
+# # print(os.path.basename(r'D:\Study\PYTHON\new\test\test2.txt'))  # имя директории
+# # print(os.path.getatime(path)) # время последнего доступа к файлу
+# f = open(file_name, 'w')
+# print(f.write('helo'))
+# f.close()
+#
