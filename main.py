@@ -681,32 +681,52 @@ from random import randint
 
 # ---------------------------- DZ 15/02/23 -----------------------------
 
-# import os
-#
-# # print(open(r"D:\Study\PYTHON\new\Work\f3.txt", "w").write(
-# #   open(r"D:\Study\PYTHON\new\Work\file1.txt", "r").read() + open(r"D:\Study\PYTHON\new\Work\file2.txt", "r").read()))
-#
-# one_file = 'file1.txt' # запись из одного файла в другой
-# two_file = 'file2.txt'
-# with open(read_file, 'r') as fr, open(write_file, 'w') as fw:
-#     for line in fr:
-#         line = line.replace("Строка", "Линия - ")
-#         fw.write(line)
+import os
+
+# a = r"D:\Study\PYTHON\new\Work\f3.txt"
+# b = r"D:\Study\PYTHON\new\Work\file1.txt"
+# c = r"D:\Study\PYTHON\new\Work\file2.txt"
+# open(a, "w").write(open(b, "r").read() + open(c, "r").read())
+
+
 # -----------------------------------------------------------------------
-# file_name = "test.txt"
+
+# file_path = r'D:\Study\PYTHON\new\test.txt'
+# if os.path.exists(file_path):
+#     dirs, name = os.path.split(file_path)
+#     atime = os.path.getatime(file_path)
+#     print(f"{name} ({dirs}) - last access time {atime} seconds")
+# else:
+#     print(f"Файл {file_path} не существует")
+
+# ---------------------------DZ19/02/23------------------------------------
+# class Rectangle:
+#     length = 3
+#     width = 9
+#     # square = 0
+#     # per = 0
+#     # gip = 0
+#
+#     def __init__(self, length, width):
+#         self.length = length
+#         self.width = width
+#         print("Длина прямоугольника:", self.length)
+#         print("Ширина прямоугольника:", self.width)
+#         # self.square = square
+#         # self.per = per
+#         # self.gip = gip
+#
+#     def get_square(self):
+#         print("Площадь прямоугольника:", self.length * self.width)
+#         print("Периметр прямоугольника:", self.length + self.width + self.length + self.width)
+#         print("Гипотенуза прямоугольника:", ((self.length ** 2) + (self.width ** 2)) ** 0.5)
+#
+#     def stars(self):
+#         for i in range(self.length):
+#             print("*" * self.width)
 #
 #
-# def is_exist(fl):
-#     if os.path.exists(fl):
-#         print("hello")
-#     else:
-#         print("kl;d")
-#
-#
-# # print(os.getcwd()) # возвращает путь к текущей директории
-# # print(os.path.basename(r'D:\Study\PYTHON\new\test\test2.txt'))  # имя директории
-# # print(os.path.getatime(path)) # время последнего доступа к файлу
-# f = open(file_name, 'w')
-# print(f.write('helo'))
-# f.close()
-#
+# r1 = Rectangle(3, 9)
+# r1.get_square()
+# r1.stars()
+
