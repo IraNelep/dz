@@ -683,6 +683,7 @@ from random import randint
 
 import os
 
+
 # a = r"D:\Study\PYTHON\new\Work\f3.txt"
 # b = r"D:\Study\PYTHON\new\Work\file1.txt"
 # c = r"D:\Study\PYTHON\new\Work\file2.txt"
@@ -730,3 +731,55 @@ import os
 # r1.get_square()
 # r1.stars()
 
+# -------------------------- DZ 27/02/23 --------------------------------
+import math
+
+
+class Sphere:
+
+    def __init__(self, pi, radius, a, b, c):
+        self.pi = pi
+        self.radius = radius
+        self.a = a
+        self.b = b
+        self.c = c
+
+    @staticmethod
+    def get_radius(radius):
+        print("get_radius:", radius)
+
+    @staticmethod
+    def get_volume(a, b):
+        print("get_volume:", (4 / 3) * a * (b ** 3))
+
+    @staticmethod
+    def get_square(a, b):
+        print("get_square:", 4 * a * (b**2))
+
+    @staticmethod
+    def get_center(a, b, c):
+        print("get_center:", (a, b, c))
+
+    def set_radius(self, new_radius):
+        self.radius = new_radius
+        print(f"set_radius({new_radius}): {new_radius}")
+
+    def is_point_inside(self, x, y, z):
+        self.a = x
+        self.b = y
+        self.c = z
+        if math.sqrt((x ** 2) + (y ** 2) + (z ** 2)) <= self.radius:
+            print(f"is_point_inside({x}, {y}, {z}): ", True)
+        else:
+            print(f"is_point_inside({x}, {y}, {z}): ", False)
+
+
+s1 = Sphere(3.14, 0.6, 0, 0, 0)
+Sphere.get_radius(0.6)
+Sphere.get_volume(3.14, 0.6)
+Sphere.get_square(3.14, 0.6)
+Sphere.get_center(0, 0, 0)
+Sphere.get_square(3.14, 0.6)
+s1.is_point_inside(0, -1.5, 0)
+s1.set_radius(1.6)
+s1.is_point_inside(0, -1.5, 0)
