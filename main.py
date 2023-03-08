@@ -732,54 +732,318 @@ import os
 # r1.stars()
 
 # -------------------------- DZ 27/02/23 --------------------------------
-import math
+# import math
+#
+#
+# class Sphere:
+#
+#     def __init__(self, pi, radius, a, b, c):
+#         self.pi = pi
+#         self.radius = radius
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     @staticmethod
+#     def get_radius(radius):
+#         print("get_radius:", radius)
+#
+#     @staticmethod
+#     def get_volume(a, b):
+#         print("get_volume:", (4 / 3) * a * (b ** 3))
+#
+#     @staticmethod
+#     def get_square(a, b):
+#         print("get_square:", 4 * a * (b**2))
+#
+#     @staticmethod
+#     def get_center(a, b, c):
+#         print("get_center:", (a, b, c))
+#
+#     def set_radius(self, new_radius):
+#         self.radius = new_radius
+#         print(f"set_radius({new_radius}): {new_radius}")
+#
+#     def is_point_inside(self, x, y, z):
+#         self.a = x
+#         self.b = y
+#         self.c = z
+#         if math.sqrt((x ** 2) + (y ** 2) + (z ** 2)) <= self.radius:
+#             print(f"is_point_inside({x}, {y}, {z}): ", True)
+#         else:
+#             print(f"is_point_inside({x}, {y}, {z}): ", False)
+#
+#
+# s1 = Sphere(3.14, 0.6, 0, 0, 0)
+# Sphere.get_radius(0.6)
+# Sphere.get_volume(3.14, 0.6)
+# Sphere.get_square(3.14, 0.6)
+# Sphere.get_center(0, 0, 0)
+# Sphere.get_square(3.14, 0.6)
+# s1.is_point_inside(0, -1.5, 0)
+# s1.set_radius(1.6)
+# s1.is_point_inside(0, -1.5, 0)
+# ---------------------------------2 способ
+# from math import pi
+#
+#
+# class Sphere:
+#     def __init__(self, radius=1.0, x=0, y=0, z=0):
+#         self.radius = radius
+#         self.x = x
+#         self.y = y
+#         self.z = z
+#
+#     def get_radius(self):
+#         return self.radius
+#
+#     def set_radius(self, ra):
+#         self.radius = ra
+#
+#     def get_volume(self):
+#         return 4 / 3 * (pi * self.radius ** 3)
+#
+#     def get_square(self):
+#         return 4 * pi * self.radius ** 2
+#
+#     def get_center(self):
+#         return self.x, self.y, self.z
+#
+#     def is_point_inside(self, x, y, z):
+#         if ((self.x - x) ** 2 + (self.y - y) ** 2 + (self.z - z) ** 2) <= self.radius ** 2:
+#             return True
+#         else:
+#             return False
+#
+#
+# s = Sphere(0.6)
+# print("get_radius:", s.get_radius())
+# print("get_volume:", s.get_volume())
+# print("get_square:", s.get_square())
+# print("get_center:", s.get_center())
+# print("is_point_inside:", s.is_point_inside(0, -1.5, 0))
+# print("set_radius:", s.set_radius(1.6))
+# print("is_point_inside:", s.is_point_inside(0, -1.5, 0))
 
 
-class Sphere:
-
-    def __init__(self, pi, radius, a, b, c):
-        self.pi = pi
-        self.radius = radius
-        self.a = a
-        self.b = b
-        self.c = c
-
-    @staticmethod
-    def get_radius(radius):
-        print("get_radius:", radius)
-
-    @staticmethod
-    def get_volume(a, b):
-        print("get_volume:", (4 / 3) * a * (b ** 3))
-
-    @staticmethod
-    def get_square(a, b):
-        print("get_square:", 4 * a * (b**2))
-
-    @staticmethod
-    def get_center(a, b, c):
-        print("get_center:", (a, b, c))
-
-    def set_radius(self, new_radius):
-        self.radius = new_radius
-        print(f"set_radius({new_radius}): {new_radius}")
-
-    def is_point_inside(self, x, y, z):
-        self.a = x
-        self.b = y
-        self.c = z
-        if math.sqrt((x ** 2) + (y ** 2) + (z ** 2)) <= self.radius:
-            print(f"is_point_inside({x}, {y}, {z}): ", True)
-        else:
-            print(f"is_point_inside({x}, {y}, {z}): ", False)
+# -------------------------- DZ 01/03/23 ----------------------------------------
 
 
-s1 = Sphere(3.14, 0.6, 0, 0, 0)
-Sphere.get_radius(0.6)
-Sphere.get_volume(3.14, 0.6)
-Sphere.get_square(3.14, 0.6)
-Sphere.get_center(0, 0, 0)
-Sphere.get_square(3.14, 0.6)
-s1.is_point_inside(0, -1.5, 0)
-s1.set_radius(1.6)
-s1.is_point_inside(0, -1.5, 0)
+# class Account:
+#     rate_usd = 0.013
+#     rate_eur = 0.011
+#     suffix = "RUB"
+#     suffix_usd = "USD"
+#     suffix_eur = "EUR"
+#
+#     def __init__(self, surname, num, percent, value=0):
+#         self.num = num
+#         self.__surname = surname  # new
+#         self.__percent = percent
+#         self.__value = value
+#         print(f"Счет №{self.num} принадлежащий {self.__surname} был открыт.")
+#         print("*" * 50)
+#
+#     def __del__(self):
+#         print("*" * 50)
+#         print(f"Счет №{self.num} принадлежащий {self.__surname} был закрыт.")
+#
+#     def get_surname(self):  # get surname
+#         return self.surname
+#
+#     def set_surname(self, surname):  # set surname
+#         self.__surname = surname
+#
+#     @property  # property surname
+#     def surname(self):
+#         return self.__surname
+#
+#     @surname.setter  # property surname
+#     def surname(self, surname):
+#         self.__surname = surname
+#
+#     @staticmethod
+#     def convert(value, rate):
+#         return value * rate
+#
+#     def get_value(self):  # get value
+#         return self.value
+#
+#     def set_value(self, value):  # set value
+#         self.__value = value
+#
+#     @property # property value
+#     def value(self):
+#         return self.__value
+#
+#     @value.setter # property value
+#     def value(self, value):
+#         self.__value = value
+#
+#     @classmethod
+#     def set_usd_rate(cls, rate):
+#         cls.rate_usd = rate
+#
+#     @classmethod
+#     def set_eur_rate(cls, rate):
+#         cls.rate_eur = rate
+#
+#     def print_balance(self):
+#         print(f"Текущий баланс {self.__value} {Account.suffix}")
+#
+#     def convert_to_usd(self):
+#         usd_val = Account.convert(self.__value, Account.rate_usd)
+#         print(f"Состояние счета: {usd_val} {Account.suffix_usd}")
+#
+#     def convert_to_eur(self):
+#         usd_eur = Account.convert(self.__value, Account.rate_eur)
+#         print(f"Состояние счета: {usd_eur} {Account.suffix_eur}")
+#
+#     def edit_owner(self, surname):
+#         self.__surname = surname
+#
+#     def get_percent(self):  # get percent
+#         return self.percent
+#
+#     def set_percent(self, percent):  # set percent
+#         self.__percent = percent
+#
+#     @property  # property percent
+#     def percent(self):
+#         return self.__percent
+#
+#     @percent.setter  # property percent
+#     def percent(self, percent):
+#         self.__percent = percent
+#
+#     def add_percents(self):
+#         self.__value += self.__value * self.__percent
+#         print("Проценты были успешно начислены!")
+#         self.print_balance()
+#
+#     def withdraw_money(self, val):
+#         if val > self.__value:
+#             print(f"К сожалению, у вас нет {val} {Account.suffix}")
+#         else:
+#             self.__value -= val
+#             print(f"{val} {Account.suffix} было успешно снято!")
+#         self.print_balance()
+#
+#     def add_money(self, val):
+#         self.__value += val
+#         print(f"{val} {Account.suffix} было успешно добавлено!")
+#         self.print_balance()
+#
+#     def print_info(self):
+#         print("Информация о счете:")
+#         print("-" * 20)
+#         print(f"№ {self.num}")
+#         print(f"Владелец: {self.__surname}")
+#         self.print_balance()
+#         print(f"Проценты: {self.__percent:.0%}")
+#         print("-" * 20)
+#
+#
+# acc = Account(num='12345', surname="Долгих", percent=0.03, value=1000)
+# acc.print_info()
+# acc.convert_to_usd()
+# acc.convert_to_eur()
+# print()
+# Account.set_usd_rate(2)
+# acc.convert_to_usd()
+# Account.set_eur_rate(3)
+# acc.convert_to_eur()
+# acc.convert_to_eur = '46' # property value
+# acc.convert_to_usd = '56' # property value
+# print()
+# acc.edit_owner("Дюма")
+# acc.surname = "Дюма"  # property surname
+# acc.print_info()
+# print()
+# acc.add_percents()
+# acc.percent = '76'  # property percent
+# print()
+# acc.withdraw_money(100)
+# print()
+# acc.withdraw_money(3000)
+# print()
+# acc.add_money(5000)
+# print()
+
+
+# ----------------------------- DZ 04/03/23 ------------------------------------
+# from math import sqrt
+#
+#
+# class Pair:
+#     def __init__(self, a, b):
+#         self.a = a
+#         self.b = b
+#
+#     def change_num(self):
+#         pass
+#
+#     @staticmethod
+#     def pro(a, b):
+#         print("Произведение:", a * b)
+#
+#     @staticmethod
+#     def summa(a, b):
+#         print("Сумма:", a + b)
+#
+#
+# class RightTriangle(Pair):
+#     def __init__(self, *args):
+#         super().__init__(*args)
+#
+#     def hyp(self, *args, a, b):
+#         super().__init__(*args)
+#         print("Гипотенуза ABC:", sqrt(a**2 + b**2))
+#
+#     def print_info(self):
+#         print("Прямоугольный треугольник ABC:")
+#
+#     def square(self, a, b):
+#         pass
+#
+#
+# right = RightTriangle(5, 8)
+# right.hyp()
+#
+#
+#
+# print()
+# p = Pair(5, 8) # pair
+# p.summa(5, 8)
+# p.pro(5, 8)
+# print()
+# triangle = RightTriangle(Pair(10, 20), RightTriangle(30, 40))
+
+# ------------------------------ DZ 07/03/23 -----------------------------
+# class Student:
+#     def __init__(self, name):
+#         self.name = name
+#         self.lp = self.Laptop()
+#
+#     def show(self):
+#         print(f'{self.name} =>')
+#
+#     class Laptop:
+#         def __init__(self, mod='HP', pro=17, memory=16):
+#             self.mod = mod
+#             self.pro = pro
+#             self.memory = memory
+#
+#         def display(self):
+#             print(f'{self.mod}, {self.pro}, {self.memory}')
+#
+#
+# stud1 = Student('Roman')
+# stud1.show()
+# g = stud1.lp
+# g.display()
+# print()
+# stud2 = Student('Vladimir')
+# stud2.show()
+# g = stud2.lp
+# g.display()
