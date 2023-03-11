@@ -980,44 +980,60 @@ import os
 #         self.a = a
 #         self.b = b
 #
-#     def change_num(self):
-#         pass
+#     @property  # property a
+#     def a_change(self):
+#         return self.a
 #
-#     @staticmethod
-#     def pro(a, b):
-#         print("Произведение:", a * b)
+#     @a_change.setter  # property a
+#     def a_change(self, a):
+#         self.a = a
 #
-#     @staticmethod
-#     def summa(a, b):
-#         print("Сумма:", a + b)
+#     @property  # property b
+#     def b_change(self):
+#         return self.b
+#
+#     @b_change.setter  # property b
+#     def b_change(self, b):
+#         self.b = b
+#
+#     def pro(self):
+#         print("Произведение:", self.a * self.b)
+#
+#     def summa(self):
+#         print("Сумма:", self.a + self.b)
 #
 #
 # class RightTriangle(Pair):
-#     def __init__(self, *args):
-#         super().__init__(*args)
 #
-#     def hyp(self, *args, a, b):
-#         super().__init__(*args)
-#         print("Гипотенуза ABC:", sqrt(a**2 + b**2))
+#     def hyp(self):
+#         hyp = round(sqrt(self.a**2 + self.b**2), 2)
+#         print("Гипотенуза ABC:", hyp)
 #
-#     def print_info(self):
-#         print("Прямоугольный треугольник ABC:")
+#     def square(self):
+#         print("Площадь ABC:", float((self.a * self.b) // 2))
 #
-#     def square(self, a, b):
-#         pass
+#     def print_info(self): # я не поняла, как сюда передать гипотенузу...
+#         print("Прямоугольный треугольник ABC:", self.a, self.b)
 #
 #
-# right = RightTriangle(5, 8)
-# right.hyp()
-#
-#
-#
+# r1 = RightTriangle(5, 8)
+# r1.hyp()
+# r1.print_info()
+# r1.square()
 # print()
 # p = Pair(5, 8) # pair
-# p.summa(5, 8)
-# p.pro(5, 8)
+# p.summa()
+# p.pro()
 # print()
-# triangle = RightTriangle(Pair(10, 20), RightTriangle(30, 40))
+# r1.a_change = 10 # property a
+# r1.b_change = 7 # property b
+# r1.hyp()
+# r1.a_change = 10
+# r1.b_change = 20
+# r1.hyp()
+# r1.summa()
+# r1.pro()
+# r1.square()
 
 # ------------------------------ DZ 07/03/23 -----------------------------
 # class Student:
@@ -1047,3 +1063,89 @@ import os
 # stud2.show()
 # g = stud2.lp
 # g.display()
+
+
+# ------------------------------ второй способ
+
+# class Student:
+#     def __init__(self, name):
+#         self.name = name
+#         self.note = self.Notebook()
+#
+#     def show(self):
+#         print(self.name, end=' ')
+#         self.note.show()
+#
+#     class Notebook:
+#         def __init__(self):
+#             self.brand = 'HP'
+#             self.cpu = 'i7'
+#             self.ram = 16
+#
+#         def show(self):
+#             print(f'=> {self.brand}, {self.cpu}, {self.ram}')
+#
+#
+# s1 = Student("Roman")
+# s2 = Student("Vladimir")
+#
+# s1.show()
+# s2.show()
+
+# ------------------------------ DZ 11.03.23 --------------------------------
+
+class Clock:
+    __DAY = 86400
+
+    def __init__(self, sec: int):
+        if not isinstance(sec, int):
+            raise ValueError("Секунды должны быть целым числом")
+        self.sec = sec % self.__DAY
+
+
+    def get_format_time(self):
+        s = self.sec % 60
+        m = (self.sec // 60) % 60
+        h = (self.sec // 3600) % 24
+        return f"{Clock.__get_form(h)}:{Clock.__get_form(m)}:{Clock.__get_form(s)}"
+
+    @staticmethod
+    def __get_form(x): # добавили первый ноль
+        return str(x) if x > 9 else "0" + str(x)
+
+    def __add__(self, other): # сложение
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+    def __sub__(self, other): # вычитание
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+    def __mul__(self, other):  # умножение
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+    def __floordiv__(self, other): # деление
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+    def __mod__(self, other): # остаток от деления
+        if not isinstance(other, Clock):
+            raise ArithmeticError("Правый операнд должен быть типом Clock")
+        return Clock(self.sec + other.sec)
+
+
+c1 = Clock(100)
+c2 = Clock(200)
+c1 += c2
+c1 -= c2
+c1 *= c2
+c1 //= c2
+c1 %= c2
+
+print(c1.get_format_time())
+# print(c2.get_format_time())
