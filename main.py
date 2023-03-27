@@ -683,7 +683,6 @@ from random import randint
 
 import os
 
-
 # a = r"D:\Study\PYTHON\new\Work\f3.txt"
 # b = r"D:\Study\PYTHON\new\Work\file1.txt"
 # c = r"D:\Study\PYTHON\new\Work\file2.txt"
@@ -722,9 +721,9 @@ import os
 #         print("Периметр прямоугольника:", self.length + self.width + self.length + self.width)
 #         print("Гипотенуза прямоугольника:", ((self.length ** 2) + (self.width ** 2)) ** 0.5)
 #
-    # def stars(self):
-    #     for i in range(self.length):
-    #         print("*" * self.width)
+# def stars(self):
+#     for i in range(self.length):
+#         print("*" * self.width)
 #
 #
 # r1 = Rectangle(3, 9)
@@ -1210,107 +1209,191 @@ import os
 # p1.val = 20
 
 
-
 # ------------------------ DZ 20/03/23 ---------------------------------------
-from abc import ABC, abstractmethod
+# from abc import ABC, abstractmethod
+#
+#
+# class Shape:
+#     def __init__(self, color):
+#         self.color = color
+#
+#     def draw(self): # рисование
+#         raise NotImplementedError("В дочернем классе должен быть определен метод draw")
+#
+#     @abstractmethod
+#     def plo(self):
+#         raise TypeError(f"Значение должно быть целым числом!")
+#
+#     def perimetr(self):
+#         raise TypeError(f"Значение должно быть целым числом!")
+#
+#     @abstractmethod
+#     def info(self):
+#         pass
+#
+#
+# class Square(Shape): # квадрат
+#     def __init__(self, side_x, color):
+#         super().__init__(color)
+#         self.side_x = side_x
+#
+#     def info(self):
+#         print("===Квадрат===")
+#         print(f"Сторона: {self.side_x}\nЦвет: {self.color}")
+#
+#     def draw(self):
+#         for q in range(self.side_x):
+#             print("*" * self.side_x)
+#
+#     def perimetr(self):
+#         print("Периметр:", self.side_x * 4)
+#
+#     def plo(self):
+#         print("Площадь:", self.side_x ** 2)
+#
+#
+# class Rectangle(Shape): # прямоугольник
+#     def __init__(self, side_x, side_y, color):
+#         super().__init__(color)
+#         self.side_x = side_x
+#         self.side_y = side_y
+#
+#     def draw(self):
+#         for m in range(self.side_x):
+#             print("*" * self.side_y)
+#
+#     def info(self):
+#         super().info()
+#         print("\n\n===Прямоугольник===")
+#         print(f"Длина: {self.side_x}\nШирина: {self.side_y}\nЦвет: {self.color}")
+#
+#     def perimetr(self):
+#         print("Периметр:", 2 *(self.side_x + self.side_y))
+#
+#     def plo(self):
+#         print("Площадь:", self.side_x * self.side_y)
+#
+#
+# class Triangle(Shape): # треугольник
+#     def __init__(self, side_x, side_y, side_z, color):
+#         super().__init__(color)
+#         self.side_x = side_x
+#         self.side_y = side_y
+#         self.side_z = side_z
+#
+#     def draw(self):
+#         rows = []
+#         for n in range(self.side_y):
+#             rows.append(" " * n + "*" * (self.side_x - 2 * n))
+#         print("\n".join(reversed(rows)))
+#
+#     def info(self):
+#         super().info()
+#         print("\n\n===Треугольник===")
+#         print(f"Сторона 1: {self.side_x}\nСторона 2: {self.side_y}\nСторона 2: {self.side_z}\nЦвет: {self.color}")
+#
+#     def perimetr(self):
+#         print("Периметр:", self.side_x + self.side_y + self.side_z)
+#
+#     def plo(self):
+#         print("Площадь:", (self.side_x + self.side_y + self.side_z) / 2)
+#
+#
+# s1 = Square(3, 'red')
+# s2 = Rectangle(3, 7, 'green')
+# s3 = Triangle(11, 6, 6, 'yellow')
+# shape = [s1, s2, s3]
+#
+# for i in shape:
+#     i.info()
+#     i.plo()
+#     i.perimetr()
+#     i.draw()
+
+# ------------------------ DZ 23/03/23 ---------------------------------------
+
+# class ValidTriangle:
+#     @staticmethod
+#     def verify_coord(coord):
+#         if not isinstance(coord, int):
+#             raise TypeError(f"Координата {coord} должна быть целым числом!")
+#         if coord <= 0:
+#             raise TypeError(f"Координата {coord} должна быть положительным числом!")
+#
+#     def __set_name__(self, owner, name):
+#         self.name = name
+#
+#     def __get__(self, instance, owner):
+#         return instance.__dict__[self.name]
+#
+#     def __set__(self, instance, value):
+#         self.verify_coord(value)
+#         instance.__dict__[self.name] = value
+#
+#
+# class Triangle:
+#     a = ValidTriangle()
+#     b = ValidTriangle()
+#     c = ValidTriangle()
+#
+#     def __init__(self, a, b, c):
+#         self.a = a
+#         self.b = b
+#         self.c = c
+#
+#     def is_triangle_valid(self):
+#         if self.a + self.b > self.c and self.b + self.c > self.a and self.c + self.a > self.b:
+#             print(f'Треугольник со сторонами ({self.a}, {self.b}, {self.c}) существует.')
+#         else:
+#             print(f'Треугольник со сторонами ({self.a}, {self.b}, {self.c}) не существует.')
+#
+#
+# t1 = Triangle(2, 5, 6)
+# t1.is_triangle_valid()
+# t2 = Triangle(5, 2, 8)
+# t2.is_triangle_valid()
+# t3 = Triangle(7, 3, 6)
+# t3.is_triangle_valid()
+
+# ----------------------------- DZ 27/03/23 ----------------------------------
+import json
+from random import choice
 
 
-class Shape:
-    def __init__(self, color):
-        self.color = color
+def gen_person():
+    name = ''
+    tel = ''
+    test = '' # новое
 
-    def draw(self): # рисование
-        raise NotImplementedError("В дочернем классе должен быть определен метод draw")
+    letters = ['a', 'b', 'c', 'd', 'e', 'f', 'g']
+    nums = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
-    @abstractmethod
-    def plo(self):
-        raise TypeError(f"Значение должно быть целым числом!")
+    while len(name) != 7:
+        name += choice(letters)
 
-    def perimetr(self):
-        raise TypeError(f"Значение должно быть целым числом!")
+    while len(tel) != 10:
+        tel += choice(nums)
 
-    @abstractmethod
-    def info(self):
-        pass
+    while len(test) != 10: # новое
+        test += choice(nums)
 
-
-class Square(Shape): # квадрат
-    def __init__(self, side_x, color):
-        super().__init__(color)
-        self.side_x = side_x
-
-    def info(self):
-        print("===Квадрат===")
-        print(f"Сторона: {self.side_x}\nЦвет: {self.color}")
-
-    def draw(self):
-        for q in range(self.side_x):
-            print("*" * self.side_x)
-
-    def perimetr(self):
-        print("Периметр:", self.side_x * 4)
-
-    def plo(self):
-        print("Площадь:", self.side_x ** 2)
+    person = {test: { # новое
+        'name': name,
+        'tel': tel
+    }}
+    return person
 
 
-class Rectangle(Shape): # прямоугольник
-    def __init__(self, side_x, side_y, color):
-        super().__init__(color)
-        self.side_x = side_x
-        self.side_y = side_y
+def write_json(person_dict):
+    try:
+        data = json.load(open('person.json'))
+    except FileNotFoundError:
+        data = {} # новое
 
-    def draw(self):
-        for m in range(self.side_x):
-            print("*" * self.side_y)
-
-    def info(self):
-        super().info()
-        print("\n\n===Прямоугольник===")
-        print(f"Длина: {self.side_x}\nШирина: {self.side_y}\nЦвет: {self.color}")
-
-    def perimetr(self):
-        print("Периметр:", 2 *(self.side_x + self.side_y))
-
-    def plo(self):
-        print("Площадь:", self.side_x * self.side_y)
+    data.update(person_dict) # новое  update
+    with open('person.json', 'w') as f:
+        json.dump(data, f, indent=2)
 
 
-class Triangle(Shape): # треугольник
-    def __init__(self, side_x, side_y, side_z, color):
-        super().__init__(color)
-        self.side_x = side_x
-        self.side_y = side_y
-        self.side_z = side_z
-
-    def draw(self):
-        rows = []
-        for n in range(self.side_y):
-            rows.append(" " * n + "*" * (self.side_x - 2 * n))
-        print("\n".join(reversed(rows)))
-
-    def info(self):
-        super().info()
-        print("\n\n===Треугольник===")
-        print(f"Сторона 1: {self.side_x}\nСторона 2: {self.side_y}\nСторона 2: {self.side_z}\nЦвет: {self.color}")
-
-    def perimetr(self):
-        print("Периметр:", self.side_x + self.side_y + self.side_z)
-
-    def plo(self):
-        print("Площадь:", (self.side_x + self.side_y + self.side_z) / 2)
-
-
-s1 = Square(3, 'red')
-s2 = Rectangle(3, 7, 'green')
-s3 = Triangle(11, 6, 6, 'yellow')
-shape = [s1, s2, s3]
-
-for i in shape:
-    i.info()
-    i.plo()
-    i.perimetr()
-    i.draw()
-
-
-
+for i in range(5):
+    write_json(gen_person())
