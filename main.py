@@ -1493,5 +1493,75 @@ import os
 #         print('Введен некорректный номер!')
 
 # -------------------------------- DZ 03/04/23 ---------------------------------
+import requests
+from bs4 import BeautifulSoup
+import csv
 
 
+def get_html(url):
+    res = requests.get(url)
+    return res.text
+
+def get_data(html):
+    soup = BeautifulSoup(html, 'lxml')
+    h1 = soup.find('h1').text
+    div1 = soup.find('div', class_='lpc-text-9__title lp-header-title-2').text
+    div2 = soup.find('div', class_='cont-central-block').find('div', class_='cont-adr').text
+    div3 = soup.find('div', class_='cont-central-block').find('div', class_='cont-phone').text
+    div4 = soup.find('div', class_='cont-central-block').find('div', class_='cont-time').text
+    div5 = soup.find('div', class_='cont-central-block').find('div', class_='float-r').text
+
+    print(h1)
+    print(div1)
+    print(div2)
+    print(div3)
+    print(div4)
+    print(div5)
+
+    data = {
+        'h1': h1,
+        'div1': div1,
+        'div2': div2,
+        'div3': div3,
+        'div4': div4,
+        'div5': div5
+    }
+
+    write_csv(data)
+
+def main():
+    url = 'https://obuv-tut2000.ru/contact'
+    get_data(get_html(url))
+
+
+def write_csv(data):
+    with open('obuvtut.csv', 'a', encoding='utf-8-sig') as f:
+        writer = csv.writer(f, delimiter=';', lineterminator='\r')
+        writer.writerow((data['h1'], data['div1'], data['div2'], data['div3'], data['div4'],  data['div5']))
+
+
+if __name__ == '__main__':
+    main()
+
+
+# -------------------------------- DZ 06/04/23 ---------------------------------
+
+#
+# from parse import Parser
+
+#
+# class Parser:
+#     def __init__(self, url, path): #2
+#         self.url = url
+#         self.path = path
+#
+#     def get_html(self): #2
+#         return requests.get(self.url).text
+#
+#     def main(): # 1
+#         pars = Parser("https://www.kolesa-darom.ru/catalog/avto/shiny/", 'shiny.txt')
+#         print(pars.get_html())
+#
+#
+# if __name__ == '__main__':
+#     main()
