@@ -1,0 +1,89 @@
+1. SELECT ID AS 'Код по магазину', Produce AS 'Название продукта', Material AS 'Материал', Color AS 'Цвет', Size AS 'Размер', Country AS 'Страна', ID_salespeople AS 'Код поставщика товара', Price AS 'Цена', Count AS 'Количество штук', REM AS 'Ремарки'
+FROM WARE
+WHERE ID_salespeople IS NULL
+
+2. SELECT Produce, Country, ID
+FROM WARE
+WHERE Country IS 'Украина'
+
+3. DELETE FROM Ware
+WHERE COUNTRY IS 'Германия'
+
+4. UPDATE Ware
+SET Country='Россия'
+WHERE Country IS 'Польша'
+
+5.INSERT INTO Ware(ID, Produce, Material, Color, Size, Country, ID_salespeople, Price, Count, REM)
+VALUES (1026, '(F8E157eaLRG)', 'полиэстер/нейлон', 'ч', '38,1x28x70', 'Германия', '2014', '126', '0', 'Stone Street Case(15)'),
+(1254, 'CC06', 'нейлон', 'ч', '38x29x7', 'Германия', '2011', '110', '6', 'Nylon Computer Case(15)'),
+(1049, 'KCB-03BKP', 'кожзам', 'ч', '40x30x8,5', 'Германия', '2001', '325', '14', 'System Case(15)'),
+(1001, 'CKN-002', 'кожзам', 'ч', '39x30x6,4', 'Германия', '2001', '143', '2', 'Notebrief(13,2)'),
+(1036, 'CN01', 'полиэстер', 'ч', '39x30x5', 'Германия', '2011', '435', '32', 'Computer Case(15/15,4)'),
+(1017, 'PON-303BK', 'полиэстер', 'ч', '44,5х33,7х5,1', 'Германия', '2015', '110', '29', 'Large Expandable computer brief(17)')
+
+6.SELECT ID, Produce, Price
+FROM Ware
+WHERE Color NOT LIKE 'ч'
+
+7. INSERT INTO Ware(ID, Produce, Material, Color, Size, Country, ID_salespeople, Price, Count, REM)
+VALUES (1046, 'NTC-117BK', 'нейлон', 'ч', '13,3x8,3x5,7', 'Украина', '2016', '0', '0', 'Micro Camera Case')
+
+8. INSERT INTO Ware(Produce, REM, Material, Color, Size, ID)
+VALUES ('POC-463BK', 'Compact Camera Case', 'полиэстер', 'ч', '11x7x4,5', 1255)
+
+9.SELECT ID_salespeople, Country, Produce
+FROM Ware
+WHERE Country LIKE 'Россия' AND ID_salespeople LIKE '2065'
+
+10.SELECT ID, Produce, Price
+FROM Ware
+WHERE Price BETWEEN 200 AND 345
+
+11.SELECT Size, Material
+FROM Ware
+WHERE Material LIKE 'кожа' AND Size > '40X30X5'
+
+12.SELECT Produce, ID_salespeople, Price, Count
+FROM Ware
+WHERE Count*Price < 1200
+
+13.UPDATE Ware
+SET ID_salespeople=2000
+WHERE COunt*Price < 500
+
+
+14.SELECT Produce, Price, Count
+FROM Ware
+WHERE Material LIKE 'кожа' AND Count < 5 AND Count*Price < 450
+
+15.SELECT Produce, Price
+FROM Ware
+WHERE Price < 250
+
+16.UPDATE Ware
+SET Material='брезент'
+WHERE Price < 200
+
+17.SELECT Produce, REM
+FROM Ware
+WHERE REM GLOB '*косметичка' 
+
+18.SELECT Produce, Material, Country, Color
+FROM Ware
+WHERE Material LIKE 'кожа' AND Color LIKE 'ч' AND Country LIKE 'Китай'
+
+19.SELECT REM
+FROM Ware
+WHERE REM GLOB "*Case*" AND REM GLOB "*1[6-9]*"
+
+20. SELECT Produce, ID_salespeople, Color
+FROM Ware
+WHERE Color IS NOT 'ч'
+
+21.UPDATE Ware
+SET Material='нейлон'
+WHERE Country LIKE 'Китай' AND Material < 'полиэстер'
+
+22.UPDATE Ware
+SET Material='нейлон'
+WHERE Country LIKE 'Китай' AND ID=1015 AND ID=1041 AND ID=1032 AND ID=1010
